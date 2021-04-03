@@ -1,0 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+:root{
+    /*Primary*/
+    --bright-blue: hsl(220, 98%, 61%);
+    --check-background: linear-gradient (hsl(192, 100%, 67%) to hsl(280, 87%, 65%));
+    --white: white;
+    /*Ligth Theme*/
+    --Background-Items: hsl(0, 0%, 98%);
+    --Background-Section: hsl(236, 33%, 92%);
+    --Color-Font-Item: hsl(235, 19%, 35%);
+    --Color-Font-Filter: hsl(233, 11%, 84%);
+    --Moon-or-Sun: url('/images/icon-moon.svg');
+    --background-image-mobile: url('/images/bg-mobile-light.jpg');
+    --background-image-desktop: url('/images/bg-desktop-light.jpg');
+    --Font-Filter-Hover: hsl(233, 14%, 35%);
+    --Task-Done:hsl(233, 11%, 84%);
+    --shadow: 5px 0 50px 10px #888;
+}
+
+html{
+    font-size: 18px;
+    font-family: 'Josefin Sans', sans-serif;
+}
+
+/*Dark Theme*/  
+body.toggle-dark{
+    --Background-Items: hsl(235, 24%, 19%);
+    --Background-Section:hsl(235, 21%, 11%);
+    --Color-Font-Item: hsl(234, 39%, 85%);
+    --Color-Font-Filter:  hsl(234, 11%, 52%);
+    --Moon-or-Sun: url('/images/icon-sun.svg');
+    --background-image-mobile: url('/images/bg-mobile-dark.jpg');
+    --background-image-desktop: url('/images/bg-desktop-dark.jpg');
+    --Font-Filter-Hover: hsl(236, 33%, 92%);
+    --Task-Done: hsl(234, 11%, 52%);
+}
+body{
+    background: var(--Background-Section);
+}
+/*-----------All Section--------*/
+section{
+    background-color: var(--Background-Section);
+    height: 650px;
+    display: flex;
+    justify-content: center;
+    transition: .8s ease-in;
+}
+
+.bg-image{
+    width: 100%;
+    height: 250px;
+    background: var(--background-image-desktop) no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    top: 0;
+    transition: .8s ease-in;
+}
+@media(max-width: 500px){
+    .bg-image{
+        background: var(--background-image-mobile) no-repeat;
+        background-size: cover;
+    }
+}
+.todo-list{
+    width: 85%;
+    max-width: 450px;
+    height: 85%;
+    position: absolute;
+    color: var(--Color-Font-Item) ;
+    margin-top: 25px;
+    transition: .8s ease-in;
+}
+
+/*-------Header Section Todo List----*/
+
+.todo-list__header{
+    width: 100%;
+    height: 3em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5em;
+    
+}
+.todo-list__logo{
+    font-size: 35px;
+    font-weight: 700;
+    letter-spacing: 10px;
+    color: var(--white);
+}
+
+/*-------Toggle mode light and nigth----*/
+.todo-list__mode{
+    width: 25px;
+    height: 25px;
+    background:var(--Moon-or-Sun) no-repeat;
+    background-position: center;
+    background-size: 100%;
+    cursor: pointer;
+}
+
+
+/*-------Create a new Todo...----*/
+.todo-list__create{
+    width: 100%;
+    height: 2.8em;
+    background: var(--Background-Items);
+    border-radius: 3px;
+    margin-bottom: 1em;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 15px;
+    transition:all .8s ease-in-out;
+    box-sizing: border-box;
+}
+.btn{
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    outline: none;
+    border: 1px solid var(--Color-Font-Filter);
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+}
+.btn:focus { 
+    outline: none;
+    text-decoration: none;
+}
+.btn:active{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+.todo-list__created .btn::after{
+    content: url('/images/icon-check.svg');
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 110%;
+    background: rgb(87,221,255);
+    background: linear-gradient(90deg, rgba(87,221,255,1) 0%, rgba(192,88,243,1) 100%);
+    opacity: 0;
+    transition:all .3s ease-in-out;
+}
+.check.btn::after{
+    opacity: 1;
+}
+.todo-list__created .btn:hover::after{
+    opacity: 1;
+}
+
+.todo-list__create > input[type="text"]{
+    width: 85%;
+    flex: 1;
+    height: 70%;
+    border: none;
+    outline: none;
+    color: var(--Color-Font-Item);
+    background: transparent;
+    margin-left: 15px;
+    font-weight: 700;
+    font-family: 'Josefin Sans', sans-serif;
+
+}
+
+
+/*-----------Todo Created------*/
+.todo-list__created{
+    width: 100%;
+    max-height: 55%;
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    background: var(--Background-Items);
+    transition:all .6s ease-in-out;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+    box-shadow: 30px 0px 30px -30px rgba(0,0,0,0.45), -30px 0px 30px -30px rgba(0,0,0,0.45);
+}
+@media (max-width: 500px) {
+    .todo-list__created{
+        max-height: 40%;
+    }
+    
+}
+
+.todo-list__created::-webkit-scrollbar {
+    width: 8px;     /* Tamaño del scroll en vertical */
+    height: 8px;    /* Tamaño del scroll en horizontal */
+}
+.todo-list__created::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+
+.todo-list__new{
+    width: 100%;
+    min-height: 5em;
+    display: flex;
+    position: inherit;
+    align-items: center;
+    background: var(--Background-Items);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-size: 14px;
+    padding: 0 15px;
+    animation: .6s new-item;
+    transition: background .6s ease-in-out;
+    box-sizing: border-box;
+}
+
+.todo-list__new > p{
+    display: flex;
+    flex: 1;
+    align-items: center;
+    height: 100%;
+    color: var(--Color-Font-Item);
+    transition:all .8s ease-in-out;
+    font-weight: 600;
+    padding: 0 15px;
+}
+.task-done>p{
+    text-decoration: line-through;
+    color: var(--Task-Done);
+}
+.todo-list__delete{
+    width: 15px;
+    height: 15px;
+    background: url('/images/icon-cross.svg') no-repeat;
+    background-size: 100%;
+    cursor: pointer;
+}
+
+/*----------Filter Todo List--------*/
+.todo-list__filter{
+    width: 100%;
+    height: 3em;
+    background: var(--Background-Items);
+    border-bottom-left-radius: 3px;
+    border-bottom-right-radius: 3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    transition:all .8s ease-in-out;
+    color: var(--Color-Font-Filter);
+    box-shadow: 0px 15px 30px -10px rgb(0,0,0,0.45);
+}
+.filter__lateral{
+    font-size: 12px;
+    font-weight: 400;
+    width: 10em;
+    display: flex;
+    justify-content: center;
+}
+.filter__center{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 3px;
+    transition:all .8s ease-in-out;
+}
+.mobile{
+    display: none;
+}
+@media (max-width: 500px) {
+    .filter__center{
+        display: flex;
+        font-size: 16px;
+        margin: 1em 0;
+        height: 3em;
+        background: var(--Background-Items);
+    }
+    .filter__center > p{
+        cursor: pointer;
+        color: var(--Color-Font-Filter);
+    }
+    .filter__center p:hover{
+        color: var(--Font-Filter-Hover);
+    }
+    .desktop{
+        display: none;
+    }
+}
+
+.filter__center > p{
+    padding: 0 10px;
+    font-weight: 700;
+    transition: .3s ease-in-out;
+    cursor: pointer;
+
+}
+.all{
+    color: var(--bright-blue);
+}
+.todo-list__filter p:hover{
+    color: var(--Font-Filter-Hover) !important;
+}
+#clear{
+    cursor: pointer;
+}
+.info{
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 16px;
+    text-align: center;
+    width: 100%;
+    margin-top: 40px;
+}
+
+footer{
+    font-size: 14px;
+    color: var(--Color-Font-Item);
+    margin-top: 25px;
+    text-align: center;
+}
+

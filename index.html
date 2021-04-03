@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+    <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+    <link rel="stylesheet" href="http://jqueryui.com/resources/demos/style.css">
+    <link rel="stylesheet" href="//apps.bdimg.com/libs/jqueryui/1.10.4/css/jquery-ui.min.css">
+    <title>Frontend Mentor | Todo app</title>
+    <link rel="stylesheet" href="./css/styles.css">
+    <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  </head>
+  <body>
+    <!--Section complete-->
+    <section>
+      <!--Section's image-->
+      <div class="bg-image"></div>
+
+      <!--Todo list-->
+      <div class="todo-list">
+        <!--Todo List's header-->
+        <div class="todo-list__header">
+          <span class="todo-list__logo">TODO</span>
+          <span class="todo-list__mode"></span>
+        </div>
+        <!--Create a todo list-->
+        <div class="todo-list__create">
+            <div class="btn"></div>
+            <input type="text" placeholder="Create a new todo..." id="input">
+        </div>
+
+        <!--Todo list created (box)-->
+        <div class="todo-list__created"></div>
+        <!--Filtering todo list-->
+        <div class="todo-list__filter">
+          <p class="filter__lateral"><span id='items-left'></span>&nbsp;items left</p>
+          <!--Filter's desktop-->
+          <div class="filter__center desktop">
+            <p class="all">All</p>
+            <p class="active">Active</p>
+            <p class="complete">Complete</p>
+          </div>
+          
+          <p class="filter__lateral" id="clear">Clear Complete</p>
+        </div>
+        <!--Filter's mobile-->
+        <div class="filter__center mobile">
+          <p id="all">All</p>
+          <p id="active">Active</p>
+          <p id="complete">Complete</p>
+        </div>
+        <!--Info-->
+        <p class="info">Drag and drop to reorder list</p> 
+        <footer>
+          <p>Challenge from 
+            <a href="https://www.frontendmentor.io/" target="_blank" rel="noopener noreferrer">
+              Fronten-Mentor
+            </a>  made by 
+            <a href="https://twitter.com/JoseRosa09" target="_blank" rel="noopener noreferrer">
+              Jose Rosales
+            </a>  
+          </p>
+        </footer>
+      </div>
+      
+    </section>
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+    <script src="http://code.jquery.com/jquery.min.js"></script>
+    <script src="http://code.jquery.com/ui/1.8.17/jquery-ui.min.js"></script>
+    <script src="http://jquery.ui.touch-punch.min.js"></script>
+    
+    <script src="//apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//apps.bdimg.com/libs/jqueryui/1.10.4/jquery-ui.min.js"></script>
+    <script src="./js/script.js"></script>
+  </body>
+</html>
